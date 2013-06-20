@@ -215,8 +215,11 @@ module ApeRawr
 
       def validate_params(action = :all, &block)
         base = self
+        action = action.to_s
         before_filter do
-          ParamsScope.new(base, params, nil, nil, &block)
+          if action == 'all' || params[:action] == action
+            ParamsScope.new(base, params, nil, nil, &block)
+          end
         end
       end
 
