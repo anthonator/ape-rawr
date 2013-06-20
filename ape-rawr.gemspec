@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["anthony@sticksnleaves.com"]
   spec.description   = %q{API parameter validation and error handling for Rails}
   spec.summary       = %q{Validate params and handle errors in a Rails based API}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/anthonator/ape-rawr"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
