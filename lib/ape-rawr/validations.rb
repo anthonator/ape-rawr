@@ -213,7 +213,7 @@ module ApeRawr
         settings.peek[:validations] = []
       end
 
-      def validate_params(action = :all, &block)
+      def params(action = :all, &block)
         base = self
         action = action.to_s
         before_filter do
