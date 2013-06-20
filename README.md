@@ -6,7 +6,7 @@ Enter ApeRawr!
 
 ## Contributions
 
-ApeRawr is an amalgamation of two awesome gems: Grape and ApeRawr. This gem combines the error handling capabilities of ApeRawr with the parameter validation of Grape into a single cohesive tool used for making API parameter validation easier. The maintainers of ApeRawr and Grape deserve most of the credit for this gem. I just provided the glue.
+ApeRawr is an amalgamation of two awesome gems: Grape and RocketPants. This gem combines the error handling capabilities of ApeRawr with the parameter validation of Grape into a single cohesive tool used for making API parameter validation easier. The maintainers of RocketPants and Grape deserve most of the credit for this gem. I just provided the glue.
 
 ## Installation
 
