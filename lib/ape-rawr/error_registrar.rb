@@ -50,14 +50,16 @@ module ApeRawr
     end
 
     # The default set of exceptions.
-    register! :throttled,       :http_status => :service_unavailable
-    register! :unauthenticated, :http_status => :unauthorized
-    register! :invalid_version, :http_status => :not_found
-    register! :not_implemented, :http_status => :service_unavailable
-    register! :not_found,       :http_status => :not_found
-    register! :bad_request,     :http_status => :bad_request
-    register! :conflict,        :http_status => :conflict
-    register! :forbidden,       :http_status => :forbidden
+    register! :throttled,         :http_status => :service_unavailable
+    register! :unauthenticated,   :http_status => :unauthorized
+    register! :invalid_version,   :http_status => :not_found
+    register! :not_implemented,   :http_status => :service_unavailable
+    register! :not_found,         :http_status => :not_found
+    register! :bad_request,       :http_status => :bad_request
+    register! :conflict,          :http_status => :conflict
+    register! :forbidden,         :http_status => :forbidden
+    register! :invalid_parameter, :http_status => :bad_request
+    register! :missing_parameter, :http_status => :bad_request
   end
 
   class InvalidResource < ApeRawr::Error

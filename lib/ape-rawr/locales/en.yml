@@ -10,3 +10,5 @@ en:
       invalid_resource: "The current resource was deemed invalid."
       conflict: "The request conflicts with an existing resource."
       forbidden: "The action you requested was forbidden."
+      invalid_parameter: "invalid parameter: %{attribute}"
+      missing_parameter: "missing parameter: %{attribute}"
