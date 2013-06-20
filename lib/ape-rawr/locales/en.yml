@@ -12,7 +12,7 @@ en:
       forbidden: "The action you requested was forbidden."
       coerce: "invalid parameter: %{attribute}"
       presence: "missing parameter: %{attribute}"
-      regexp: "invalid parameters: %{attribute}"
+      regexp: "invalid parameter: %{attribute}"
     exceptions:
       unknown_options: "unknown options: %{options}"
       unknown_validator: "unknown validator: %{options}"
