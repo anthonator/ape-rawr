@@ -26,7 +26,7 @@ module ApeRawr
     # @see Errors[]
     # @param [Error] error the error to register.
     def self.add(error)
-      @@errors[error.error_name] = error
+      @@errors[error.error_key] = error
     end
 
     # Creates an error class to represent a given error state.
@@ -37,12 +37,13 @@ module ApeRawr
     # @option options [Symbol] :http_status the status code for the given error, doing nothing if absent.
     # @example Adding a ApeRawr::NinjasUnavailable class w/ `:service_unavailable` as the status code:
     #   register! :ninjas_unavailable, :http_status => :service_unavailable
-    def self.register!(name, options = {})
-      klass_name = (options[:class_name] || name.to_s.classify).to_sym
+    def self.register!(key, options = {})
+      klass_name = (options[:class_name] || key.to_s.classify).to_sym
       base_klass = options[:base] || Error
       raise ArgumentError, ":base must be a subclass of ApeRawr::Error" unless base_klass <= Error
       klass = Class.new(base_klass)
-      klass.error_name(options[:error_name] || name.to_s.underscore)
+      klass.error_key(options[:error_key] || key.to_s.underscore)
+      klass.error_name(options[:error_name] || key.to_s.underscore)
       klass.http_status(options[:http_status]) if options[:http_status].present?
       (options[:under] || ApeRawr).const_set klass_name, klass
       add klass
@@ -58,9 +59,9 @@ module ApeRawr
     register! :bad_request,       :http_status => :bad_request
     register! :conflict,          :http_status => :conflict
     register! :forbidden,         :http_status => :forbidden
-    register! :coerce,            :http_status => :bad_request
-    register! :present,           :http_status => :bad_request
-    register! :regexp,            :http_status => :bad_request
+    register! :coerce,            :http_status => :bad_request, :error_name => "invalid_parameter"
+    register! :presence,          :http_status => :bad_request, :error_name => "missing_parameter"
+    register! :regexp,            :http_status => :bad_request, :error_name => "invalid_parameter"
   end
 
   class InvalidResource < ApeRawr::Error

@@ -6,6 +6,20 @@ module ApeRawr
   # @note Inspired by RocketPants
   # @see https://github.com/filtersquad/rocket_pants/blob/master/lib/rocket_pants/error.rb
   class Error < StandardError
+
+    # @overload error_key
+    #   Returns the key with which the error can be looked up
+    # @overload error_key(value)
+    #   Sets the error key for the current error.
+    #   @param [#to_sym] the name of this key.
+    def self.error_key(value = nil)
+      if value.nil?
+        @key ||= :unkown
+      else
+        @key = (value.presence && value.to_sym)
+      end
+    end
+
     # @overload error_name
     #   Returns the error name for this error class, defaulting to the class
     #   name underscorized minus _error.
@@ -31,6 +45,11 @@ module ApeRawr
       else
         @http_status = (value.presence && value)
       end
+    end
+
+    # Gets the key of this error from the class.
+    def error_key
+      self.class.error_key
     end
 
     # Gets the name of this error from the class.

@@ -25,10 +25,10 @@ module ApeRawr
     # @return [String] the found error message.
     def lookup_error_message(exception)
       # TODO: Add in notification hooks for non-standard exceptions.
-      name    = lookup_error_name(exception)
+      key     = lookup_error_key(exception)
       message = default_message_for_exception exception
       context = lookup_error_context(exception).reverse_merge(:scope => :"ape_rawr.errors", :default => message)
-      I18n.t(name, context.except(:metadata))
+      I18n.t(key, context.except(:metadata))
     end
 
     def default_message_for_exception(exception)
@@ -36,6 +36,14 @@ module ApeRawr
         'An unknown error has occurred.'
       else
         exception.message
+      end
+    end
+
+    def lookup_error_key(exception)
+      if exception.respond_to?(:error_key)
+        exception.error_key
+      else
+        :system
       end
     end
 
@@ -79,7 +87,7 @@ module ApeRawr
 
     # Renders an exception as JSON using a nicer version of the error name and
     # error message, following the typically error standard as laid out in the JSON
-    # api design.
+    # ap design.
     # @param [StandardError] exception the error to render a response for.
     def render_error(exception)
       logger.debug "Rendering error for #{exception.class.name}: #{exception.message}" if logger
