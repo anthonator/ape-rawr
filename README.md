@@ -1,6 +1,6 @@
 # ApeRawr
 
-Ever wanted an easy way to validate your API paraemters and spit out clean, developer friendly error messages? Ever notice how there's no good way to do that in Rails?
+Ever wanted an easy way to validate your API parameters and spit out clean, developer friendly error messages? Ever notice how there's no good way to do that in Rails?
 
 Enter ApeRawr!
 
