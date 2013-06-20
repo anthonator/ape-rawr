@@ -10,7 +10,7 @@ module ApeRawr
         if valid_type?(new_value)
           params[attr_name] = new_value
         else
-          error!(:invalid_parameter, :attribute => attr_name)
+          error!(:coerce, :attribute => attr_name)
         end
       end
 
