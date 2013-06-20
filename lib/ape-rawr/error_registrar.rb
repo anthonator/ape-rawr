@@ -58,8 +58,9 @@ module ApeRawr
     register! :bad_request,       :http_status => :bad_request
     register! :conflict,          :http_status => :conflict
     register! :forbidden,         :http_status => :forbidden
-    register! :invalid_parameter, :http_status => :bad_request
-    register! :missing_parameter, :http_status => :bad_request
+    register! :coerce,            :http_status => :bad_request
+    register! :present,           :http_status => :bad_request
+    register! :regexp,            :http_status => :bad_request
   end
 
   class InvalidResource < ApeRawr::Error

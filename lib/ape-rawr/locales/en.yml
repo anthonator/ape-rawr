@@ -13,3 +13,6 @@ en:
       coerce: "invalid parameter: %{attribute}"
       presence: "missing parameter: %{attribute}"
       regexp: "invalid parameters: %{attribute}"
+    exceptions:
+      unknown_options: "unknown options: %{options}"
+      unknown_validator: "unknown validator: %{options}"

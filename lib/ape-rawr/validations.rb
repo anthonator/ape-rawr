@@ -14,7 +14,7 @@ module ApeRawr
         @scope = scope
 
         if options.is_a?(Hash) && !options.empty?
-          raise Grape::Exceptions.UnknownOptions.new(options.keys)
+          error!(:unknown_options, :options => options)
         end
       end
 
@@ -198,7 +198,7 @@ module ApeRawr
         if validator_class
           validator_class.new(attrs, options, doc_attrs[:required], self).validate!(@params)
         else
-          raise Grape::Exceptions::UnknownValidator.new(type)
+          error!(:unknown_validator, :options => options)
         end
       end
     end
