@@ -53,7 +53,10 @@ module ApeRawr
     # @param [StandardError] exception the exception to find the name for
     # @return [Symbol] the name of the given error
     def lookup_error_name(exception)
-      if exception.respond_to?(:error_name)
+      context = lookup_error_context(exception)
+      if context[:error_name]
+        context[:error_name]
+      elsif exception.respond_to?(:error_name)
         exception.error_name
       else
         :system
