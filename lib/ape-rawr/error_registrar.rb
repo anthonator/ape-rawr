@@ -66,6 +66,7 @@ module ApeRawr
 
   class InvalidResource < ApeRawr::Error
     http_status :unprocessable_entity
+    error_key   :invalid_resource
     error_name  :invalid_resource
 
     # Errors are ActiveModel Errors
